@@ -4,4 +4,68 @@
     font-family: 'Roboto', sans-serif;
     font-size: 32px;
     list-style: none;
+    text-decoration: none;
+}
+
+a {
+    color: inherit;
+}
+
+.icon {
+    height: 1em;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 3fr 1fr;
+}
+
+header {
+    grid-column: 2 / 3;
+    grid-row: 1/2;
+    padding: 8px;
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+aside {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    padding: 8px;
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+main {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 8px;
+    background-color: #475569;
+    color: #f1f5f9;
+    padding: 32px;
+}
+
+footer {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    padding: 8px;
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px, 30%));
+    gap: 32px;
+}
+
+.card {
+    border-radius: 6px;
+    padding: 8px;
+    background-color: #e2e8f0;
+    color: #334155;
 }
