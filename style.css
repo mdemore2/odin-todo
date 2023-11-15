@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 32px;
     list-style: none;
     text-decoration: none;
 }
@@ -12,7 +11,7 @@ a {
 }
 
 .icon {
-    height: 1em;
+    height: 3em;
     vertical-align: middle;
     display: inline-block;
     border-radius: 100%;
@@ -21,7 +20,8 @@ a {
 body {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 5fr 1fr;
+    height: 100vh;
 }
 
 header {
@@ -55,6 +55,7 @@ footer {
     padding: 8px;
     background-color: #e2e8f0;
     color: #334155;
+    text-align: center;
 }
 
 .container {
