@@ -30,6 +30,15 @@ header {
     padding: 8px;
     background-color: #e2e8f0;
     color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.new {
+    display: flex;
+    gap: 16px;
 }
 
 aside {
@@ -69,4 +78,23 @@ footer {
     padding: 8px;
     background-color: #e2e8f0;
     color: #334155;
+}
+
+button {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    border: none;
+    border-radius: 100px;
+    width:auto;
+    height: 3em;
+    padding: 8px;
+    font-size: 1em;
+}
+
+dialog[open]{
+    padding: 8px;
+    display: grid;
+    gap: 8px;
+    margin: 8px;
+    border-radius: 12px;
 }

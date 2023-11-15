@@ -10,13 +10,40 @@
 <body>
     <header>
         <h1><img class="icon" src="assets/lou.jpeg" alt="Man named Lou taking notes"> To Do Lou</h1>
+        <ul class="new">
+            <li><button id="open-new-todo">New To Do</button></li>
+            <li><button id="open-new-project">New Project</button></li>
+        </ul>
     </header>
+    <dialog id="new-todo">
+        <label>Title:
+            <input id="todo-title" type="text">
+        </label>
+        <label>Description:
+            <input id="todo-description" type="text">
+        </label>
+        <label>Priority:
+            <input id="todo-priority" type="number">
+        </label>
+        <label>Due Date:
+            <input id="todo-due" type="date">
+        </label>
+        <label>Project:
+            <input id="todo-project-name" type="text">
+        </label>
+        <button autofocus id="close-todo">Submit</button>
+    </dialog>
+
+    <dialog id="new-project">
+        <label>Name:
+            <input id="project-name" type="text">
+        </label>
+        <button autofocus id="close-project">Submit</button>
+    </dialog>
+
     <aside>
         <h2>Projects</h2>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
+        <ul class="projects">
         </ul>
     </aside>
 
