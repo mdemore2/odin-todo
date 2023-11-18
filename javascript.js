@@ -5,9 +5,18 @@ renderPage();
 var projects;
 var todos;
 
-function createToDo(title, descprition, project, dueDate, priority) {}
+function createToDo() {
+    let title = document.getElementById("todo-title").value;
+    let description = document.getElementById("todo-description").value;
+    let project = document.getElementById("todo-project-name").value;
+    let dueDate = document.getElementById("todo-due").value;
+    let priority = document.getElementById("todo-priority").value;
+    return { title, description, project, dueDate, priority };
+}
 
-function createProject(name, todoList) {}
+function createProject(name, todoList) {
+    return {name, todoList };
+}
 
 function displayProjects() {
   //load projects into new-todo modal
@@ -18,7 +27,7 @@ function displayProjects() {
     opt.innerHTML = element;
     projectSelectList.appendChild(opt);
   });
-  //display projects
+  //display projects in sidebar
   var projectList = document.querySelector(".projects");
   projects.forEach((element) => {
     var proj = document.createElement("li");
@@ -61,6 +70,8 @@ function enableModals() {
 
   newToDoClose.addEventListener("click", (e) => {
     //TODO handle data
+    var newToDoObj = createToDo();
+    todos.push(newToDoObj);
     saveData();
     renderPage();
     e.preventDefault();
@@ -72,7 +83,6 @@ function enableModals() {
   });
 
   newProjectClose.addEventListener("click", (e) => {
-    //handle data
     var projectName = document.getElementById("project-name");
     projects.push(projectName.value);
     saveData();
@@ -85,7 +95,7 @@ function enableModals() {
 function renderPage() {
   clearPage();
   displayProjects();
-  //display todos
+  //TODO display todos
 }
 
 function clearPage(){
