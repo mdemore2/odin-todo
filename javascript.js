@@ -36,7 +36,20 @@ function displayProjects() {
   });
 }
 
-function displayToDos() {}
+function displayToDos() {
+    var todoContainer = document.querySelector(".todo-container");
+    todos.forEach((item) => {
+        var todoDiv = document.createElement("div");
+        todoDiv.className = "todo-card";
+        Object.keys(item).forEach((key) => {
+            var keySpan = document.createElement("span");
+            keySpan.className = key;
+            keySpan.textContent = item[key];
+            todoDiv.appendChild(keySpan);
+        })
+        todoContainer.appendChild(todoDiv);
+    });
+}
 
 function loadData() {
   projects = JSON.parse(localStorage.getItem("projects"));
@@ -96,6 +109,7 @@ function renderPage() {
   clearPage();
   displayProjects();
   //TODO display todos
+  displayToDos();
 }
 
 function clearPage(){
@@ -105,4 +119,7 @@ function clearPage(){
   
   var projectList = document.querySelector(".projects");
   projectList.replaceChildren();
+
+  var todoContainer = document.querySelector(".todo-container");
+  todoContainer.replaceChildren();
 }
