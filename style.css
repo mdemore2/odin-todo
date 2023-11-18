@@ -67,7 +67,7 @@ footer {
     text-align: center;
 }
 
-.container {
+.todo-container {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(250px, 30%));
     gap: 32px;
