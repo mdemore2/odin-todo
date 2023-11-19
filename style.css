@@ -47,6 +47,20 @@ aside {
     padding: 8px;
     background-color: #0f172a;
     color: #f1f5f9;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+aside > * {
+    flex: 0;
+}
+
+aside > ul{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 main {
@@ -56,6 +70,9 @@ main {
     background-color: #475569;
     color: #f1f5f9;
     padding: 32px;
+}
+main > h2 {
+    padding-bottom: 16px;
 }
 
 footer {
@@ -104,4 +121,8 @@ dialog[open]{
     gap: 8px;
     margin: 8px;
     border-radius: 12px;
+}
+
+.selected {
+    color: #a1a1aa;
 }

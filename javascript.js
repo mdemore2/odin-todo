@@ -5,13 +5,17 @@ renderPage();
 var projects;
 var todos;
 
+//TODO filter todos by project
+//TODO add mark done button
+
 function createToDo() {
     let title = document.getElementById("todo-title").value;
     let description = document.getElementById("todo-description").value;
     let project = document.getElementById("todo-project-name").value;
     let dueDate = document.getElementById("todo-due").value;
     let priority = document.getElementById("todo-priority").value;
-    return { title, description, project, dueDate, priority };
+    let uuid = crypto.randomUUID();
+    return { title, description, project, dueDate, priority, uuid };
 }
 
 function createProject(name, todoList) {
@@ -33,20 +37,53 @@ function displayProjects() {
     var proj = document.createElement("li");
     proj.innerHTML = element;
     projectList.appendChild(proj);
+    proj.addEventListener("click", switchProject);
+    if (element === "default"){
+      proj.classList.add("selected");
+    }
   });
 }
 
-function displayToDos() {
+function switchProject(e){
+  var todoContainer = document.querySelector(".todo-container");
+  todoContainer.replaceChildren();
+
+  var project = e.currentTarget.textContent;
+  displayToDos(project);
+
+  var projectList = document.querySelector(".projects");
+//add/remove selected class for styling
+  [...projectList.children].forEach((element) => {element.classList.remove("selected")});
+  e.currentTarget.classList.add("selected");
+}
+
+function removeToDo(evt){
+  var uuid = evt.currentTarget.id;
+  uuid = uuid.replace("todo-uuid-", "");
+
+  todos = todos.filter((el)=> el.uuid != uuid);
+
+  saveData();
+  evt.currentTarget.parentElement.remove();
+}
+
+function displayToDos(project) {
     var todoContainer = document.querySelector(".todo-container");
-    todos.forEach((item) => {
+    var todosToDisplay = todos.filter((td) => td.project === project);
+    todosToDisplay.forEach((item) => {
         var todoDiv = document.createElement("div");
         todoDiv.className = "todo-card";
-        Object.keys(item).forEach((key) => {
+        Object.keys(item).filter((key) => key != "uuid").forEach((key) => {
             var keySpan = document.createElement("span");
             keySpan.className = key;
             keySpan.innerHTML = `<b>${key.replace(/([a-z])([A-Z])/g, '$1 $2')}:</b> ${item[key]}`;
             todoDiv.appendChild(keySpan);
         })
+        var doneBtn = document.createElement("button");
+        doneBtn.textContent = "Mark Done";
+        doneBtn.id = `todo-uuid-${item.uuid}`;
+        doneBtn.addEventListener("click", removeToDo);
+        todoDiv.appendChild(doneBtn);
         todoContainer.appendChild(todoDiv);
     });
 }
@@ -82,7 +119,6 @@ function enableModals() {
   });
 
   newToDoClose.addEventListener("click", (e) => {
-    //TODO handle data
     var newToDoObj = createToDo();
     todos.push(newToDoObj);
     saveData();
@@ -108,8 +144,7 @@ function enableModals() {
 function renderPage() {
   clearPage();
   displayProjects();
-  //TODO display todos
-  displayToDos();
+  displayToDos("default");
 }
 
 function clearPage(){
