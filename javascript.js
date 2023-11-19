@@ -44,7 +44,7 @@ function displayToDos() {
         Object.keys(item).forEach((key) => {
             var keySpan = document.createElement("span");
             keySpan.className = key;
-            keySpan.textContent = item[key];
+            keySpan.innerHTML = `<b>${key.replace(/([a-z])([A-Z])/g, '$1 $2')}:</b> ${item[key]}`;
             todoDiv.appendChild(keySpan);
         })
         todoContainer.appendChild(todoDiv);
